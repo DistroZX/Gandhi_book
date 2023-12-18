@@ -1,0 +1,81 @@
+
+.mainbtn{
+
+	background-color:#f07c29;
+	border:1px solid #f07c29;
+	color:#FFFFFF;
+	
+} 
+
+.mainbtn:hover{
+
+	background-color:#f07c29;
+	border:1px solid #f07c29;
+	color:#FFFFFF;
+} 
+ 
+ 
+
+#thereadonline{
+
+	background-color:#D90000;
+	border:1px solid #D90000;
+	color:#FFFFFF;
+	margin-left:20px;
+	
+} 
+
+
+#thereadonline:hover{
+
+	background-color:#D90000;
+	border:1px solid #D90000;
+	color:#FFFFFF;
+} 
+
+
+
+ 
+
+.p-image{
+	
+	margin-top:15px;
+} 
+
+#upload_image{
+	
+	display:none;
+} 
+
+#theuploadbtn{
+	
+	background-color:#f07c29;
+	border:1px solid #f07c29;
+	color:#FFFFFF;
+	 
+}
+
+
+
+.categories{
+	
+	padding-top:60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
