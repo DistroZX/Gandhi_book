@@ -1,42 +1,38 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="100,000+ Free eBooks in the Genres you Love | gandhi Books,ebooks to read,free books online pdf,download books free pdf,pdf book free online,books for free online,free books online,books pdf,free books,free book,gandhibooks,read books online,gandhi books,free who was books,free book download pdf,book for free to read online.">
-	<meta name="keywords" content="ebooks to read, free books online pdf, free ebook pdf, download free ebook pdf, download books free pdf, pdf book free online, books for free online, free books online, books pdf, free books, free book,gandhi books,read books online,gandhibooks,free book download pdf,read books online free">
-	<meta name="abstract" content="100,000+ Free eBooks in the Genres you Love: book, ebooks, pdfbook, pdf books, books,download books, read books, download free ebook pdf,">
-	<title>100,000+ Free eBooks in the Genres you Love | gandhi Books</title>
-	
-		<!-- Favicon -->
-		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
-		<!-- all css here -->
-		<!-- bootstrap v3.3.6 css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/bootstrap.min.css') }}">
-		<!-- animate css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/animate.css') }}">
-		<!-- meanmenu css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/meanmenu.min.css') }}">
-		<!-- owl.carousel css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/owl.carousel.css') }}">
-		<!-- font-awesome css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/font-awesome.min.css') }}">
-		<!-- flexslider.css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/flexslider.css') }}">
-		<!-- chosen.min.css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/chosen.min.css') }}">
-		<!-- style css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/style.css') }}">
-		<link rel="stylesheet" href="{{ asset('user_r/css/croppie.css') }}">
+<html lang="en">
 
-		<link rel="stylesheet" href="{{ asset('user_r/css/gandhibooks.css') }}">
-		<!-- responsive css -->
-		<link rel="stylesheet" href="{{ asset('user_r/css/responsive.css') }}">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gandhi Admin - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/adminpanel/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/adminpanel/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('admin_r/css/admin.css') }}">
+
+
+
+
+
 </head>
-<body>
-	@include('user.common.header')
+<body id="page-top">
+	@include('admin.common.header')
 	@yield('content')
-	@include('user.common.footer')
+	@include('admin.common.footer')
 </body>
 </html>

@@ -22,16 +22,21 @@
 <div class="user-login-area mb-70">
 	<div class="container">
 		<div class="row">
+			@if (session('success'))
+			    <div class="alert alert-success">
+			        {{ session('success') }}
+			    </div>
+			@endif
 			<div class="col-lg-12">
-				@if(session('error'))
-				    <div class="alert alert-danger">
-				        {{ session('error') }}
-				    </div>
-				@endif
-				<div class="login-title text-center mb-30">
-					<h2>Login</h2>
-					<p>Get access to unlimited download of free ebook</p>
-				</div>
+			@if(session('error'))
+			    <div class="alert alert-danger">
+			        {{ session('error') }}
+			    </div>
+			@endif
+			<div class="login-title text-center mb-30">
+				<h2>Login</h2>
+				<p>Get access to unlimited download of free ebook</p>
+			</div>
 			</div>
 			<div class="offset-lg-3 col-lg-6 col-md-12 col-12">
 				<div class="login-form">
@@ -48,7 +53,7 @@
 						</div>
 						
 						<div class="single-login single-login-2">
-							<button type="submit" class="active">Login</button>
+							<button type="submit" class=" btn btn-block">Login</button>
 							<input class="pull-left" id="rememberme" type="checkbox" name="rememberme" value="forever">
 							<span class="pull-left">Remember me</span>
 						</div>

@@ -44,21 +44,25 @@
 	28. Wishlist
 	29. 404 page
 	
-
------------------------------------------------------------------------------------*/
-
-/*--------------------------------------------------------------*/
-/*  1. Template Default CSS (body, link color, section etc)
-/*-------------------------------------------------------------*/
-
-/* google-font */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Rufina:400,700');
-
-html,
-body {
-    height: 100%;
+    
+    -----------------------------------------------------------------------------------*/
+    
+    /*--------------------------------------------------------------*/
+    /*  1. Template Default CSS (body, link color, section etc)
+    /*-------------------------------------------------------------*/
+    
+    /* google-font */
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Rufina:400,700');
+    
+    html,
+    body {
+        height: 100%;
+    }
+    
+#myDataTable {
+    background-color: #111 !important; /* Your desired background color */
+    color: white !important; /* Your desired text color */
 }
-
 .floatleft {
     float: left;
 }
@@ -166,6 +170,7 @@ body {
     background: #b3d4fc;
     text-shadow: none;
 }
+
 
 .browserupgrade {
     margin: 0.2em 0;
@@ -7617,3 +7622,8 @@ p.lost-password a:hover {
 }
 
 /*------ end Compare Page Wrapper -----*/
+
+
+.user_name{
+    padding: 22px 0px 0px 35px !important;
+}
