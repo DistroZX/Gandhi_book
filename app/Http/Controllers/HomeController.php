@@ -47,6 +47,10 @@ class Homecontroller extends Controller
     {
         return view('admin.userDetails.addUser');
     }
+    public function Book_form()
+    {
+
+    }
 
 
 

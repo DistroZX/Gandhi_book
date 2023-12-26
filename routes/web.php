@@ -20,6 +20,7 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('/anonymous/addUserForm', [HomeController::class, 'AddUserForm'])->name('Add_user_form');
     Route::post('/anonymous/addUser', [UserController::class, 'AddUser'])->name('Add_user');
     Route::delete('show/{id}', [UserController::class, 'destroy']);
+    Route::post('add_book_form', [UserController::class, 'Book_form'])->name('add_book_form');
 
 });
 

@@ -35,6 +35,11 @@
                         <h6 class="collapse-header">User Utilities:</h6>
                         <a class="collapse-item" href="{{ route('show') }}">Users Table</a>
                     </div>
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Book Utilities:</h6>
+                        <a class="collapse-item" href="{{ route('add_book_form') }}">Books Table</a>
+                    </div>
+
                 </div>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
