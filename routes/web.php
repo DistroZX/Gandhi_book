@@ -1,10 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Middleware\IsAdmin;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookController;
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -15,12 +16,21 @@ Route::middleware(['IsAdmin'])->group(function () {
 
  	Route::get('/anonymous/dashboard', [HomeController::class, 'anonymus_dashboard'])->name('admin.dashboard');
  	Route::get('/anonymous/login', [HomeController::class, 'admin_logout'])->name('admin.logout');
-     //user
+    //user
     Route::get('/anonymous/users', [HomeController::class, 'showUser'])->name('show');
     Route::get('/anonymous/addUserForm', [HomeController::class, 'AddUserForm'])->name('Add_user_form');
     Route::post('/anonymous/addUser', [UserController::class, 'AddUser'])->name('Add_user');
-    Route::delete('show/{id}', [UserController::class, 'destroy']);
-    Route::post('add_book_form', [UserController::class, 'Book_form'])->name('add_book_form');
+    Route::delete('user/{id}', [UserController::class, 'destroy']);
+    //book
+    Route::get('add_book_form', [HomeController::class, 'Book_form'])->name('add_book_form');
+    Route::post('add_book', [BookController::class, 'Add_Book'])->name('add_Book');
+    Route::delete('book/{id}', [BookController::class, 'destroyBook']);
+
+
+    Route::get('anonymous/authors', [HomeController::class, 'AuthorsList'])->name('authors_list');
+    Route::get('anonymous/categories', [HomeController::class, 'CategoriesList'])->name('categories_list');
+
+    Route::get('anonymous/book_list', [HomeController::class, 'Book_List'])->name('admin_book_list');
 
 });
 
@@ -35,9 +45,17 @@ Route::get('/profile', [UserController::class, 'user_profile'])->name('user.prof
 
 
 Route::get('/Booklist', [HomeController::class, 'booklist'])->name('list');
+Route::get('book/category/{id}', [BookController::class, 'showCategory'])->name('showCategoryBooks');
+
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/authors', [HomeController::class, 'author'])->name('author');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+
+//book details(product page)
+Route::get('/book/{id}', [HomeController::class, 'showBookDetails'])->name('bookDetails');
+//checkout page
+
+
 
 
 

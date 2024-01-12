@@ -67,7 +67,7 @@
         font-size: 14px;
         padding: 15px 0;
     }
-    
+
 }
 
 
@@ -209,12 +209,12 @@
     }
     .category-menu {
         padding: 0 0 20px 15px;
-    } 
-    
-    
-    
-    
-    
+    }
+
+
+
+
+
 }
 
 
@@ -494,7 +494,7 @@
     .home-3 .mobile-menu-area .mean-nav ul#nav {
         height: 170px;
     }
-    
+
     .banner-static-2{
         margin-top: 30px;
     }
@@ -507,8 +507,8 @@
     .product-details .new-book-area.mt-60{
         margin-bottom: 30px;
     }
-    
-    
+
+
 }
 
 
@@ -1357,7 +1357,7 @@
     .modal-pro-content h3 {
         font-size: 24px;
     }
-    
+
 }
 
 
@@ -1389,26 +1389,26 @@
     .banner-shadow-hover img {
         width: 100%;
     }
-    
+
     .single-banner .banner-img {
         flex: 0 0 19px;
         margin-right: 8px;
     }
     .single-banner .banner-text h4 {
         font-size: 15px;
-    }    
+    }
     .banner-area.banner-res-large .col-12 {
         max-width: 50%;
         flex: 0 0 50%;
-    }    
+    }
     .home-6 .slider-content-2 {
         margin-right: 0;
-    }  
+    }
     .modal-pro-content {
         margin-top: 0px;
     }
     .modal-pro-content h3 {
         font-size: 24px;
     }
-    
+
 }

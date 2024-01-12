@@ -4,10 +4,10 @@
     Version: 2
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     1. Template Default CSS (body, link color, section etc)
 	2. Header-area
 		2.1 Header top area
@@ -43,22 +43,22 @@
 	27. Checkout
 	28. Wishlist
 	29. 404 page
-	
-    
+
+
     -----------------------------------------------------------------------------------*/
-    
+
     /*--------------------------------------------------------------*/
     /*  1. Template Default CSS (body, link color, section etc)
     /*-------------------------------------------------------------*/
-    
+
     /* google-font */
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Rufina:400,700');
-    
+
     html,
     body {
         height: 100%;
     }
-    
+
 #myDataTable {
     background-color: #111 !important; /* Your desired background color */
     color: white !important; /* Your desired text color */
@@ -66,6 +66,7 @@
 .floatleft {
     float: left;
 }
+
 
 .floatright {
     float: right;
@@ -1470,7 +1471,7 @@ body {
 .most-product-img {
     position: relative;
     overflow: hidden;
-	width: 100%; 
+	width: 100%;
 	text-align:center;
 }
 

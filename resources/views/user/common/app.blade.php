@@ -25,6 +25,9 @@
 		<link rel="stylesheet" href="{{ asset('user_r/css/owl.carousel.css') }}">
 		<!-- font-awesome css -->
 		<link rel="stylesheet" href="{{ asset('user_r/css/font-awesome.min.css') }}">
+
+		<link rel="stylesheet" href="{{ asset('user_r/css/custom.css') }}">
+
 		<!-- flexslider.css -->
 		<link rel="stylesheet" href="{{ asset('user_r/css/flexslider.css') }}">
 		<!-- chosen.min.css -->

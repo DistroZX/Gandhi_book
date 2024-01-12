@@ -34,9 +34,15 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $request->session()->regenerate();
-            return redirect()->route('admin.dashboard')->withSuccess('You have successfully logged in!');
-        }else {
-            return redirect()->route('sign_up')->with('error',"User doesn't exist!");
+            if ($user->user_type === 'admin') {
+                return redirect()->route('admin.dashboard')->withSuccess('You have successfully logged in!');
+
+            } else {
+                Auth::logout();
+                return redirect()->route('sign_up')->with('error', "You don't have admin access.");
+            }
+        }else{
+            return redirect()->route('sign_in')->with('error', "Invalid credentials!");
         }
 
       }
@@ -144,27 +150,28 @@ class UserController extends Controller
               'username' => 'required|unique:users',
               'email' => 'required|email|unique:users',
               'password' => 'required|min:8',
-              'cpassword' => 'required|same:password',
+              'c_password' => 'required|same:password',
               'user_type' => 'required',
           ]);
-          $generatedPassword = $validatedData['password'];
 
-          $users = new User();
-          $users->username = $validatedData['username'];
-          $users->email = $validatedData['email'];
-          $users->password = Hash::make($validatedData['password']);
-          $users->user_type = ($validatedData['user_type']);
-          ;
 
-          $users->save();
+
+          $user = new User();
+          $user->username = $validatedData['username'];
+          $user->email = $validatedData['email'];
+          $user->password = Hash::make($validatedData['password']);
+          $user->user_type = ($validatedData['user_type']);
+
+
+          $user->save();
 
           return redirect()->route('show')->with('success', 'You have successfully added a user!');
       }
       public function destroy($id)
       {
-         $user = User::findOrFail($id);
-         $user->delete();
-         return back()->withSuccess("User Deleted Successfully");
+          $user = User::findOrFail($id);
+          $user->delete();
+          return back()->withSuccess("User Deleted Successfully");
       }
 
 

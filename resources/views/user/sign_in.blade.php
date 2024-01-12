@@ -46,12 +46,12 @@
 							<label>Email<span>*</span></label>
 							<input type="email" name="email" id="email"required/>
 						</div>
-						
+
 						<div class="single-login">
 							<label>Password <span>*</span></label>
 							<input type="password" name="password" id="password" required />
 						</div>
-						
+
 						<div class="single-login single-login-2">
 							<button type="submit" class=" btn btn-block">Login</button>
 							<input class="pull-left" id="rememberme" type="checkbox" name="rememberme" value="forever">
@@ -60,7 +60,7 @@
 					</form>
 					<a href="reset-password.php">Lost your password?</a>
 					<p>Don't have an account <a href="register.php" style="color:#F17B28;">Register</a></p>
-					
+
 				</div>
 			</div>
 		</div>

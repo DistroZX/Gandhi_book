@@ -3,3 +3,6 @@
     background-color: #111;
     color: white;
 }
+ul#accordionSidebar {
+    z-index: 9899;
+}
