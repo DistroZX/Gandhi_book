@@ -17,14 +17,16 @@ class Book extends Model
     {
         return $this->belongsTo(Category::class, 'categoryId');
     }
-    public function categoryList()
-    {
-        return $this->belongsTo(Category::class, 'categoryId');
-    }
 
     public function author()
     {
         return $this->belongsTo(Author::class, 'authorId');
     }
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'product_id');
+    }
+
+
 
 }

@@ -33,6 +33,11 @@ Route::middleware(['IsAdmin'])->group(function () {
     Route::get('anonymous/book_list', [HomeController::class, 'Book_List'])->name('admin_book_list');
 
 });
+Route::middleware(['IsLogin'])->group(function () {
+    Route::post('/order/{id}/{userId}', [BookController::class, 'BookOrderUpdate'])->name('bookOrder');
+    Route::get('/checkout/{id}/{userId}', [HomeController::class, 'BookCheckoutPage'])->name('bookCheckout');
+    Route::get('/book/{id}', [HomeController::class, 'showBookDetails'])->name('bookDetails');
+});
 
 Route::get('/sign_up', [UserController::class, 'sign_up'])->name('sign_up');
 Route::post('/users', [UserController::class, 'store'])->name('registration');
@@ -40,7 +45,8 @@ Route::post('/users', [UserController::class, 'store'])->name('registration');
 Route::get('/sign_in', [UserController::class, 'sign_in'])->name('sign_in');
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'user_logout'])->name('user.logout');
-Route::get('/profile', [UserController::class, 'user_profile'])->name('user.profile');
+Route::get('/profile', [UserController::class, 'userProfile'])->name('user_profile');
+
 
 
 
@@ -52,8 +58,7 @@ Route::get('/authors', [HomeController::class, 'author'])->name('author');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 
 //book details(product page)
-Route::get('/book/{id}', [HomeController::class, 'showBookDetails'])->name('bookDetails');
-//checkout page
+
 
 
 

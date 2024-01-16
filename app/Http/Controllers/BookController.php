@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Image;
+use App\Models\Order;
 
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class BookController extends Controller
@@ -48,19 +50,15 @@ class BookController extends Controller
         }
         public function showCategory($id)
         {
+        $books = Book::whereHas('category', function($query) use($id){
+            $query->select('id') // Select the columns you are grouping by
+            ->where('id', $id);
 
+        })->get();
 
-            $books = Book::whereHas('category', function($query) use($id){
-                $query->select('id') // Select the columns you are grouping by
-                ->where('id', $id);
-
-            })->get();
-
-
-            return view('user.list')->with('books', $books);
+        return view('user.list')->with('books', $books);
 
         }
-
 
         public function destroyBook ($id)
         {
@@ -69,7 +67,38 @@ class BookController extends Controller
         $book->delete();
 
         return back()->withSuccess("User Deleted Successfully");
-    }
+
+        }
+        public function BookOrderUpdate($id, Request $request,$userId)
+        {
+            $book = Book::find($id);
+            $user = User::with('addresses')->find($userId);
+
+
+            $min = 1000000;
+            $max = 9999999;
+            $order_id = random_int($min, $max);
+
+            $order = new Order();
+            $order->order_id = $order_id;
+            $order->product_id = $request->product_id;
+            $order->user_id = $request->userId;
+            $order->quantity = $request->quantity;
+            $order->total_price = $request->total_price;
+            $order->status = $request->status;
+
+            $order->save();
+
+            return redirect()->route('index', ['id' => $book->id, 'userId' => $user->id])
+                ->with('success', 'Order placed successfully!')
+                ->with(['quantity' => $request->quantity, 'totalPrice' => $request->total_price]);
+
+
+
+        }
+
+
+
 
 
 

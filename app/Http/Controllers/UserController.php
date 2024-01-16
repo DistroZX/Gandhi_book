@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Order;
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 
 class UserController extends Controller
@@ -85,6 +84,7 @@ class UserController extends Controller
       }
 
 
+
       // admin logout
       public function admin_logout()
       {
@@ -111,34 +111,7 @@ class UserController extends Controller
             $users->save();
 
 
-            // Mail to users
-            // Include PHPMailer autoloader
-            // require_once __DIR__ . '/../../../vendor/autoload.php';
 
-
-
-            // // Create a PHPMailer instance
-            // $mail = new PHPMailer(true);
-
-            // try {
-            // // Gmail SMTP Configuration
-            // $mail->isSMTP();
-            // $mail->Host = 'smtp.gmail.com';
-            // $mail->SMTPAuth = true;
-            // $mail->Username = 'ansilaferbin@gmail.com'; // Your Gmail address
-            // $mail->Password = 'fuckOFF@666'; // Your Gmail password
-            // $mail->SMTPSecure = 'tls';
-            // $mail->Port = 587;
-
-            // // Email content
-            // $mail->setFrom('ansilaferbin@gmail.com', 'kkpp');
-            // $mail->addAddress($validatedData['email']); // Recipient email
-            // $mail->Subject = 'Your Generated Password';
-            // $mail->isHTML(true);
-            // $mail->Body = "Your generated password is: $generatedPassword. Please change this password after logging in for security reasons.";
-
-            // // Send email
-            // $mail->send();
 
             return redirect()->route('sign_up')->with('success', 'You have successfully registered! Check your email for the generated password.');
 
@@ -172,6 +145,19 @@ class UserController extends Controller
           $user = User::findOrFail($id);
           $user->delete();
           return back()->withSuccess("User Deleted Successfully");
+      }
+
+      public function userProfile(){
+          $book = Book::get();
+          $user = User::get();
+          $order = Order::get();
+
+
+          return view('user.profile', [
+              'book' => $book,
+              'user' => $user,
+              'order' => $order
+              ]);
       }
 
 

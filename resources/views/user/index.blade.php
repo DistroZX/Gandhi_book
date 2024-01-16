@@ -12,7 +12,7 @@
                         <div class="col-lg-7">
                             <div class="slider-content slider-animated-1 text-center">
                                 <h1>Access to thousands of free ebooks <br/> <br/> Download or Read online </h1>
-                                <a href="books">Get Started</a></div>
+                                <a href="{{route('list')}}">Get Started</a></div>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                         <div class="col-lg-7">
                             <div class="slider-content slider-animated-1 text-center">
                                 <h1>Access to thousands of free ebooks <br/> <br/> Download or Read online </h1>
-                                <a href="books">Get Started</a></div>
+                                <a href="{{route('list')}}">Get Started</a></div>
                         </div>
                     </div>
                 </div>
@@ -37,29 +37,7 @@
     <!-- slider-area-end -->
 
     <!-- ads -->
-    <div class="header-mid-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-12"><br/><br/>
 
-                    <script async
-                            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5449429768096195"
-                            crossorigin="anonymous"></script>
-                    <!-- thelongadsbanner -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-5449429768096195"
-                         data-ad-slot="1851353004"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- ads end -->
 
     <!-- featured-area-start -->
@@ -82,13 +60,13 @@
                             <div class="product-wrapper">
                                 <div class="product-img">
                                     @foreach($book->images as $image)
-                                        <a href="book/the-handbook-of-international-trade-and-finance">
+                                        <a href="{{ route('bookDetails', ['id' => $book->id]) }}">
                                             <img src="{{ asset('books/' . $image->image) }}"
                                                  alt="The Handbook of International Trade and Finance" class="primary"/>
                                         </a>
                                     @endforeach
                                     <div class="quick-view">
-                                        <a class="action-view" href="book/business-intelligence-and-analytics"
+                                        <a class="action-view" href="{{ route('bookDetails', ['id' => $book->id]) }}"
                                            title="Download">
                                             <i class="fa fa-download"></i>
                                         </a>
@@ -100,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="product-details text-center">
-                                    <h4><a href="book/business-intelligence-and-analytics">{{ $book->name }}</a></h4>
+                                    <h4><a href="{{ route('bookDetails', ['id' => $book->id]) }}">{{ $book->name }}</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -124,9 +102,7 @@
                         career-oriented resources inspired by Gandhi's philosophy. We're dedicated to sharing Gandhi's
                         wisdom and supporting authors who echo his values. For questions or thoughts, contact our editor
                         at [email protected]. Join us in spreading Gandhi's legacy of positive change worldwide!"</p>
-                    <p>if you have any questions or feedback, don't hesitate to contact our editor <a
-                            href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                            data-cfemail="caa3a4aca58aa0bfa4a1b3a8a5a5a1b9e4a9a5a7">[email&#160;protected]</a>.</p>
+                    <p>if you have any questions or feedback, don't hesitate to contact our editor .</p>
                 </div>
             </div>
         </div>
@@ -150,14 +126,14 @@
                                 <div class="product-wrapper">
                                     <div class="product-img">
                                         @foreach($book->images as $image)
-                                            <a href="book/the-handbook-of-international-trade-and-finance">
+                                            <a href="{{ route('bookDetails', ['id' => $book->id]) }}">
                                                 <img src="{{ asset('books/' . $image->image) }}"
                                                      alt="The Handbook of International Trade and Finance"
                                                      class="primary"/>
                                             </a>
                                         @endforeach
                                         <div class="quick-view">
-                                            <a class="action-view" href="book/business-intelligence-and-analytics"
+                                            <a class="action-view" href="{{ route('bookDetails', ['id' => $book->id]) }}"
                                                title="Download">
                                                 <i class="fa fa-download"></i>
                                             </a>
@@ -169,7 +145,7 @@
                                         </div>
                                     </div>
                                     <div class="product-details text-center">
-                                        <h4><a href="book/business-intelligence-and-analytics">{{ $book->name }}</a>
+                                        <h4><a href="{{ route('bookDetails', ['id' => $book->id]) }}">{{ $book->name }}</a>
                                         </h4>
                                     </div>
                                 </div>
@@ -202,7 +178,7 @@
                             </div>
                         </div>
                         <div class="banner-img-2">
-                            <a href="book/business-intelligence-and-analytics"><img
+                            <a href=""><img
                                     src="user_r/images/index/651e0e326900f1.12459702.jpg"
                                     alt="Business Intelligence and Analytics"/></a>
                         </div>
@@ -217,12 +193,12 @@
 
                                 <div class="single-bestseller mb-25">
                                     <div class="bestseller-img">
-                                        <a href="book/goliath"><img
+                                        <a href=""><img
                                                 src="user_r/images/index/62bb36d8da8cf9.77555192.jpeg"
                                                 alt="Goliath"/></a>
                                     </div>
                                     <div class="bestseller-text text-center">
-                                        <h3><a href="book/goliath">Goliath</a></h3>
+                                        <h3><a href="">Goliath</a></h3>
                                     </div>
                                 </div>
 
@@ -234,12 +210,12 @@
 
                                 <div class="single-bestseller mb-25">
                                     <div class="bestseller-img">
-                                        <a href="book/induction"><img
+                                        <a href=""><img
                                                 src="user_r/images/index/62bb4361dbcca3.85469648.jpg"
                                                 alt="Induction"/></a>
                                     </div>
                                     <div class="bestseller-text text-center">
-                                        <h3><a href="book/induction">Induction</a></h3>
+                                        <h3><a href="">Induction</a></h3>
                                     </div>
                                 </div>
 
@@ -251,12 +227,12 @@
 
                                 <div class="single-bestseller mb-25">
                                     <div class="bestseller-img">
-                                        <a href="book/the-reluctant-coroner"><img
+                                        <a href=""><img
                                                 src="user_r/images/index/62bb5bfe51fa40.75435426.jpg"
                                                 alt="The Reluctant Coroner"/></a>
                                     </div>
                                     <div class="bestseller-text text-center">
-                                        <h3><a href="book/the-reluctant-coroner">The Reluctant Coroner</a></h3>
+                                        <h3><a href="">The Reluctant Coroner</a></h3>
                                     </div>
                                 </div>
 
@@ -268,12 +244,12 @@
 
                                 <div class="single-bestseller mb-25">
                                     <div class="bestseller-img">
-                                        <a href="book/the-fireraisers"><img
+                                        <a href=""><img
                                                 src="user_r/images/index/62bb5c6b0f0221.60648534.jpeg"
                                                 alt="The Fireraisers"/></a>
                                     </div>
                                     <div class="bestseller-text text-center">
-                                        <h3><a href="book/the-fireraisers">The Fireraisers</a></h3>
+                                        <h3><a href=" ">The Fireraisers</a></h3>
                                     </div>
                                 </div>
 
@@ -285,12 +261,12 @@
 
                                 <div class="single-bestseller mb-25">
                                     <div class="bestseller-img">
-                                        <a href="book/the-swordswoman"><img
+                                        <a href=""><img
                                                 src="user_r/images/index/62bb5d4661a4f4.02866932.jpeg"
                                                 alt="The Swordswoman"/></a>
                                     </div>
                                     <div class="bestseller-text text-center">
-                                        <h3><a href="book/the-swordswoman">The Swordswoman</a></h3>
+                                        <h3><a href="">The Swordswoman</a></h3>
                                     </div>
                                 </div>
 
@@ -302,7 +278,7 @@
 
                                 <div class="single-bestseller mb-25">
                                     <div class="bestseller-img">
-                                        <a href="book/fire-water"><img
+                                        <a href=""><img
                                                 src="user_r/images/index/62bb5dc67a71f2.31406030.jpeg"
                                                 alt="Fire & Water"/></a>
                                     </div>
@@ -393,13 +369,12 @@
 
                                 <div class="single-bestseller mb-25">
                                     <div class="bestseller-img">
-                                        <a href="book/business-intelligence-and-analytics"><img
+                                        <a href=""><img
                                                 src="user_r/images/index/651e0e326900f1.12459702.jpg"
                                                 alt="Business Intelligence and Analytics"/></a>
                                     </div>
                                     <div class="bestseller-text text-center">
-                                        <h3><a href="book/business-intelligence-and-analytics">Business Intelligence and
-                                                Anal</a></h3>
+                                        <h3><a href="">Business Intelligence <and></and>Anal</a></h3>
                                     </div>
                                 </div>
 
@@ -411,12 +386,12 @@
 
                                 <div class="single-bestseller mb-25">
                                     <div class="bestseller-img">
-                                        <a href="book/business-analysis-methodology-book"><img
+                                        <a href=""><img
                                                 src="user_r/images/index/651e0a9e914225.06515792.png"
                                                 alt="Business Analysis Methodology Book"/></a>
                                     </div>
                                     <div class="bestseller-text text-center">
-                                        <h3><a href="book/business-analysis-methodology-book">Business Analysis
+                                        <h3><a href="">Business Analysis
                                                 Methodology </a></h3>
                                     </div>
                                 </div>
@@ -600,7 +575,7 @@
                                         <div class="product-wrapper">
                                             <div class="product-img">
                                                 @foreach($book->images as $image)
-                                                    <a href="book/the-handbook-of-international-trade-and-finance">
+                                                    <a href="{{ route('bookDetails', ['id' => $book->id]) }}">
                                                         <img src="{{ asset('books/' . $image->image) }}"
                                                              alt="The Handbook of International Trade and Finance"
                                                              class="primary"/>
@@ -608,7 +583,7 @@
                                                 @endforeach
                                                 <div class="quick-view">
                                                     <a class="action-view"
-                                                       href="book/business-intelligence-and-analytics"
+                                                       href="{{ route('bookDetails', ['id' => $book->id]) }}"
                                                        title="Download">
                                                         <i class="fa fa-download"></i>
                                                     </a>
@@ -621,7 +596,7 @@
                                             </div>
                                             <div class="product-details text-center">
                                                 <h4>
-                                                    <a href="book/business-intelligence-and-analytics">{{ $book->name }}</a>
+                                                    <a href="{{ route('bookDetails', ['id' => $book->id]) }}s">{{ $book->name }}</a>
                                                 </h4>
                                             </div>
                                         </div>
@@ -655,21 +630,20 @@
                                                 @foreach($cats->books->take(3) as $book)
                                                     <div class="product-total-2">
                                                         <div class="single-most-product bd mb-18">
-                                                            <div class="most-product-img">
+                                                            <div class="">
                                                                 @foreach($book->images as $image)
-                                                                    <a href="book/the-handbook-of-international-trade-and-finance">
+                                                                    <a href="{{ route('bookDetails', ['id' => $book->id]) }}">
+
                                                                         <img
                                                                             src="{{ asset('books/' . $image->image) }}"
                                                                             alt="The Handbook of International Trade and Finance"
                                                                             class="primary"/>
                                                                     </a>
+                                                                    <p>{{$book->name}}</p>
+
                                                                 @endforeach
                                                             </div>
-                                                            <div class="most-product-content">
-                                                                <h4>
-                                                                    <a href="book/siddhartha">{{$book->name}}</a>
-                                                                </h4>
-                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -697,14 +671,14 @@
                                     <div class="single-post">
                                         <div class="post-img">
 
-                                            <a href="blog/unveiling-the-past-gripping-world-war-ii-history-books"><img
-                                                    src="user_r/images/index/6582df567fed96.59575195.jpg"
+                                            <a href="{{ route('blog' ) }}"><img
+                                                    src="user_r/images/index/656f29a041c9f3.21878089.jpg"
                                                     alt="Unveiling the Past: Gripping World War II History Books"></a>
 
                                         </div>
                                         <div class="post-content" style="text-align: justify;">
                                             <h3>
-                                                <a href="blog/unveiling-the-past-gripping-world-war-ii-history-books">Unveiling
+                                                <a href="{{ route('blog' ) }}">Unveiling
                                                     the Past: Gripping World War II History Books</a>
                                             </h3>
                                             <span class="meta-author">By: Admin / 2023-12-20</span>
@@ -722,13 +696,13 @@
                                     <div class="single-post">
                                         <div class="post-img">
 
-                                            <a href="blog/top-mystery-novels-of-all-time"><img
-                                                    src="user_r/images/index/6582de81e91a84.29181605.jpg"
+                                            <a href="{{ route('blog' ) }}"><img
+                                                    src="user_r/images/index/656f2b2ea6fa06.39008832.jpg"
                                                     alt="Top Mystery Novels of All Time"></a>
 
                                         </div>
                                         <div class="post-content" style="text-align: justify;">
-                                            <h3><a href="blog/top-mystery-novels-of-all-time">Top
+                                            <h3><a href="{{ route('blog' ) }}">Top
                                                     Mystery Novels of All Time</a>
                                             </h3>
                                             <span class="meta-author">By: Admin / 2023-12-20</span>
@@ -746,14 +720,14 @@
                                     <div class="single-post">
                                         <div class="post-img">
 
-                                            <a href="blog/journey-to-the-stars-a-cosmic-reading-list-for-space-enthusiasts"><img
-                                                    src="user_r/images/index/6582dd3b230d84.37605293.jpg"
+                                            <a href="{{ route('blog' ) }}"><img
+                                                    src="user_r/images/index/656f2dff13f0a9.34982700.jpg"
                                                     alt="Journey to the Stars: A Cosmic Reading List for Space Enthusiasts"></a>
 
                                         </div>
                                         <div class="post-content" style="text-align: justify;">
                                             <h3>
-                                                <a href="blog/journey-to-the-stars-a-cosmic-reading-list-for-space-enthusiasts">Journey
+                                                <a href="{{ route('blog' ) }}">Journey
                                                     to the Stars: A Cosmic Reading List for Space
                                                     Enthusiasts</a></h3>
                                             <span class="meta-author">By: Admin / 2023-12-20</span>
@@ -771,14 +745,14 @@
                                     <div class="single-post">
                                         <div class="post-img">
 
-                                            <a href="blog/culinary-delights-unleashing-your-inner-home-chef-with-quick-and-easy-recipes"><img
-                                                    src="user_r/images/index/6582dc3fa972e6.39133402.jpg"
+                                            <a href="{{ route('blog' ) }}"><img
+                                                    src="user_r/images/index/656f2638bdc0f9.34487927.jpg"
                                                     alt="Culinary Delights: Unleashing Your Inner Home Chef with Quick and Easy Recipes"></a>
 
                                         </div>
                                         <div class="post-content" style="text-align: justify;">
                                             <h3>
-                                                <a href="blog/culinary-delights-unleashing-your-inner-home-chef-with-quick-and-easy-recipes">Culinary
+                                                <a href="{{ route('blog' ) }}">Culinary
                                                     Delights: Unleashing Your Inner Home Chef with Quick
                                                     and Easy Recipes</a>
                                             </h3>
@@ -797,14 +771,14 @@
                                     <div class="single-post">
                                         <div class="post-img">
 
-                                            <a href="blog/epic-adventures-await-must-read-fantasy-series-for-fantasy-enthusiasts"><img
-                                                    src="user_r/images/index/6582d9e450a300.80487918.png"
+                                            <a href="{{ route('blog' ) }}"><img
+                                                    src="user_r\images\index\656f25999f2ea2.41917181.jpeg"
                                                     alt="Epic Adventures Await: Must-Read Fantasy Series for Fantasy Enthusiasts"></a>
 
                                         </div>
                                         <div class="post-content" style="text-align: justify;">
                                             <h3>
-                                                <a href="blog/epic-adventures-await-must-read-fantasy-series-for-fantasy-enthusiasts">Epic
+                                                <a href="{{ route('blog' ) }}">Epic
                                                     Adventures Await: Must-Read Fantasy Series for
                                                     Fantasy Enthusiasts</a></h3>
                                             <span class="meta-author">By: Admin / 2023-12-20</span>
@@ -822,14 +796,14 @@
                                     <div class="single-post">
                                         <div class="post-img">
 
-                                            <a href="blog/your-unique-business-and-money-narrative-50-book-ideas-to-inspire"><img
-                                                    src="user_r/images/index/656f2dff13f0a9.34982700.jpg"
+                                            <a href="{{ route('blog' ) }}"><img
+                                                    src="user_r/images/index/655d3d84b8c022.33318955.jpg"
                                                     alt="Your Unique Business and Money Narrative: 50 Book Ideas to Inspire"></a>
 
                                         </div>
                                         <div class="post-content" style="text-align: justify;">
                                             <h3>
-                                                <a href="blog/your-unique-business-and-money-narrative-50-book-ideas-to-inspire">Your
+                                                <a href="{{ route('blog' ) }}">Your
                                                     Unique Business and Money Narrative: 50 Book Ideas
                                                     to Inspire</a></h3>
                                             <span class="meta-author">By: Admin / 2023-12-05</span>
@@ -847,34 +821,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- recent-post-area-end -->
 
-
-                <!-- footer-area-start -->
-                <!-- banner-area-start -->
-                <div class="banner-area-5 mtb-95">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-12">
-
-                                <script async
-                                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5449429768096195"
-                                        crossorigin="anonymous"></script>
-                                <!-- thelongadsbanner -->
-                                <ins class="adsbygoogle"
-                                     style="display:block"
-                                     data-ad-client="ca-pub-5449429768096195"
-                                     data-ad-slot="1851353004"
-                                     data-ad-format="auto"
-                                     data-full-width-responsive="true"></ins>
-                                <script>
-                                    (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- banner-area-end -->
 
 @endsection

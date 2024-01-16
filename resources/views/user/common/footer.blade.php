@@ -176,6 +176,7 @@
 		<script src="user_r/js/sweetalert.min.js"></script>
 		<script src="user_r/js/croppie.js"></script>
 		<script src="user_r/js/gandhibooks.js"></script>
+		<script src="user_r/js/checkout_script.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

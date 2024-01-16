@@ -5,7 +5,7 @@
 		<div class="header-mid-area ptb-20">
 			<div class="container">
 				<div class="row">
-					
+
 					<div class="col-lg-3 col-md-3 col-12">
 						<div class="logo-area text-center logo-xs-mrg">
 							<a href="/"><img src="user_r/images/bookimages/logo.png" alt="logo" width="196"></a>
@@ -21,7 +21,7 @@
 							</form>
 						</div>
 					</div>
-			
+
 					<div class="col-md-3 user_name" style="padding: 0px 0px;">
 						@if(Auth::check())
 							Welcome {{Auth::user()->username}}
@@ -32,7 +32,7 @@
 		</div>
 		<!-- header-mid-area-end -->
 		<!-- ads -->
-		
+
 		<div class="header-mid-area">
 			<div class="container">
 				<div class="row" style="text-align: center; display: flex; justify-content: center;">
@@ -48,15 +48,15 @@
 						        {{ session('error') }}
 						    </div>
 						@endif
-						<br>	
+						<br>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- ads end -->
-		
-		
+
+
 		<!-- main-menu-area-start -->
 		<div class="main-menu-area d-md-none d-none d-lg-block sticky-header-1" id="header-sticky">
 			<div class="container">
@@ -70,10 +70,10 @@
 									<li><a href="{{route('category')}}">Categories</a></li>
 									<li><a href="{{route('author')}}">Authors</a></li>
 									<!-- requesting a book need to be adjusted -->
-									<li><a href="{{route('sign_in')}}">Request Book</a></li> 
+
 									<li><a href="{{route('blog')}}">Blog</a></li>
 									@if(Auth::check())
-										<li><a href="{{ route('user.profile') }}">My Profile</a></li>
+										<li><a href="{{ route('user_profile') }}">My Profile</a></li>
 										<li><a href="{{ route('user.logout') }}">Logout</a></li>
 									@else
 										<li class="active"><a href="{{route('sign_up')}}">Register</a></li>
@@ -82,7 +82,7 @@
 								</ul>
 							</nav>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -113,4 +113,3 @@
 		</div>
 		<!-- mobile-menu-area-end -->
 	</header>
-	

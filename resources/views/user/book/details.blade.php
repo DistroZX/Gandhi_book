@@ -1,6 +1,7 @@
 @extends('user.common.app')
 
 
+
 @section('content')
     <div class="product-main-area mb-70 mt-20">
         <div class="container">
@@ -15,9 +16,9 @@
                                 <div class="flexslider">
                                     <ul class="slides">
                                         <li data-thumb="../administrator/bookimages/651e0e326900f1.12459702.jpg">
-                                            @foreach($book->images as $image)
+                                                @foreach($book->images as $image)
                                                 <a href="{{ route('bookDetails', ['id' => $book->id]) }}">
-                                                    <img src="{{ asset('books/' . $image->image) }}"
+                                                        <img src="{{ asset('books/' . $image->image) }}"
                                                          alt="The Handbook of International Trade and Finance" class="primary"/>
                                                 </a>
                                             @endforeach
@@ -32,6 +33,12 @@
                                     </ul>
                                 </div>
                             </div>
+
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{session('success')}}
+                                </div>
+                            @endif
 
 
                             <div class="col-lg-7 col-md-6 col-12">
@@ -53,27 +60,51 @@
                                         <div class="reviews-actions">
                                             <a href="category?category=business">Category: {{$book->category->genre}}</a>
                                         </div>
+                                        <div class="reviews-actions">
+
+                                        </div>
                                     </div>
                                     <div class="product-info-price">
                                         <div class="price-final">
-										<span>
-																					</span>
+
+										<span id="price"> Price: {{$book->price}}</span>
                                         </div>
+
                                     </div>
 
+
                                     <div class="product-add-form">
+                                        <form action="{{ route('bookCheckout', ['id' => $book->id,'userId' => Auth::id()]) }}" method="get" class="form-group">
+                                            @csrf
+                                            <label for="quantity">Quantity:</label>
+                                            @if($errors->has('quantity'))
+                                                <span class="text-danger">{{$errors->first('quantity')}}</span>
+                                            @endif
+                                            <input type="number" name="quantity" value="{{ old('quantity') }}" class="form-control mb-1" id="quantity" required>
 
-                                        <form>
-                                            <a href="">Buy Now</a>
-                                            <form>
+                                            <input type="hidden" name="total_price" id="total_price" value="1">
 
-                                                <form>
-                                                    <a href="reader.php?book=thebooks/651e0e326904a-business-intelligence-and-analytics.pdf" target="_blank" onclick="readBookOnline(1153)" id="thereadonline">Read Online</a>
-
-
-                                                </form>
-                                            </form>
+                                            <button type="submit" class="btn btn-primary">Buy Now</button>
                                         </form>
+
+                                        <!-- Placeholder for the calculated price -->
+                                        <div id="price"></div>
+
+                                        <script>
+                                            document.getElementById('quantity').addEventListener('input', function () {
+                                                var quantity = this.value;
+                                                if (quantity > 10) {
+                                                    window.alert("Maximum allowed quantity reached!");
+                                                    this.value = 10;
+                                                }
+                                                if (quantity <= 0) {
+                                                    window.alert("Quantity must be positive");
+                                                    this.value = 1;
+                                                }
+
+
+                                            });
+                                        </script>
                                     </div>
 
                                     <div class="product-social-links">

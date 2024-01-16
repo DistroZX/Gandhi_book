@@ -28,6 +28,8 @@
 
 		<link rel="stylesheet" href="{{ asset('user_r/css/custom.css') }}">
 
+		<link rel="stylesheet" href="{{ asset('user_r/css/checkout_style.css') }}">
+
 		<!-- flexslider.css -->
 		<link rel="stylesheet" href="{{ asset('user_r/css/flexslider.css') }}">
 		<!-- chosen.min.css -->

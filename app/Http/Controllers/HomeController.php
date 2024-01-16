@@ -8,7 +8,10 @@ use App\Models\User;
 use App\Models\Author;
 use App\Models\Category;
 
-use Illuminate\Support\Facades\DB;
+
+use Illuminate\Http\Request;
+
+
 
 class Homecontroller extends Controller
 {
@@ -43,7 +46,7 @@ class Homecontroller extends Controller
 
 	}
 	public function booklist(){
-        $books = Book::get();
+        $books = Book::simplePaginate(12);
         $images = Image::get();
 		return view('user.list',[
             'books' => $books,
@@ -107,6 +110,24 @@ class Homecontroller extends Controller
             abort(404);
         }
         return view('user.book.details', ['book' => $book]);
+    }
+    public function BookCheckoutPage($id, Request $request,$userId){
+        $request->validate([
+          'quantity'=>'required'
+        ]);
+        $quantity = $request->input('quantity');
+        $totalPrice = $request->input('total_price');
+        $book = Book::find($id);
+        $user = User::with('addresses')->find($userId);
+
+        if(!$book){
+            abort(404);
+        }
+        return view('user.book.checkout',
+            ['book' => $book,
+                'user' => $user,
+                'quantity' => $quantity,
+                'totalPrice' => $totalPrice]);
     }
 
 }

@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        
+
         'email',
         'password',
     ];
@@ -42,9 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-     public function isAdmin()
+
+    public function addresses ()
     {
-        return $this->user_type === 'admin';
+        return $this->HasMany(Address::class, 'user_id');
     }
 }
 
