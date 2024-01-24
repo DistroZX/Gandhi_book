@@ -8,17 +8,17 @@
 
 					<div class="col-lg-3 col-md-3 col-12">
 						<div class="logo-area text-center logo-xs-mrg">
-							<a href="/"><img src="user_r/images/bookimages/logo.png" alt="logo" width="196"></a>
+							<a href="/"><img src="/user_r/images/bookimages/logo.png" alt="logo" width="196"></a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<div class="header-search">
-							<form action="book/search.php" class="row">
-								<div class="col-10 offset-1" id="searchfrom">
-									<input type="text" placeholder="Search entire store here..." name="search" value="">
-									<button type="submit" class="btn btn-warning mainbtn"><i class="fa fa-search"></i></button>
-								</div>
-							</form>
+{{--							<form action="book/search.php" class="row">--}}
+{{--								<div class="col-10 offset-1" id="searchfrom">--}}
+{{--									<input type="text" placeholder="Search entire store here..." name="search" value="">--}}
+{{--									<button type="submit" class="btn btn-warning mainbtn"><i class="fa fa-search"></i></button>--}}
+{{--								</div>--}}
+{{--							</form>--}}
 						</div>
 					</div>
 

@@ -45,9 +45,6 @@
 
                         <input type="hidden" name="total_price" value="{{$totalPrice}}">
                         <input type="hidden" name="status" value="1">
-
-
-
                     <!-- Checkout -->
                     <div class="card shadow-0 border">
                         <div class="p-4">
@@ -74,7 +71,6 @@
                                   class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
                                 1
                               </span>
-
                                     @foreach($book->images as $image)
                                         <img src="{{ asset('books/' . $image->image) }}" class="img-sm rounded border "
                                              width="98" height="90px" alt="book"/>
@@ -86,10 +82,7 @@
                                     <h6 class="">Category: {{$book->category->genre}}</h6>
 
                                     <h5 class="price text-primary">Total:₹{{ $totalPrice}} </h5>
-
-
                                 </div>
-
                             </div>
                         </div>
 

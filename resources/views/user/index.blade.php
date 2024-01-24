@@ -626,7 +626,7 @@
                                             <h3>{{$cats->genre}}</h3>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="col-lg-10 col-md-10 col-sm-10">
                                                 @foreach($cats->books->take(3) as $book)
                                                     <div class="product-total-2">
                                                         <div class="single-most-product bd mb-18">
@@ -639,11 +639,11 @@
                                                                             alt="The Handbook of International Trade and Finance"
                                                                             class="primary"/>
                                                                     </a>
-                                                                    <p>{{$book->name}}</p>
-
+                                                                <?php $truncatedText = substr($book->name, 0, 15);
+                                                                    echo '<p title="' .  $book->name  . '">' . $truncatedText . '</p>';
+                                                                    ?>
                                                                 @endforeach
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -773,8 +773,8 @@
 
                                             <a href="{{ route('blog' ) }}"><img
                                                     src="user_r\images\index\656f25999f2ea2.41917181.jpeg"
-                                                    alt="Epic Adventures Await: Must-Read Fantasy Series for Fantasy Enthusiasts"></a>
-
+                                                    alt="Epic Adventures Await: Must-Read Fantasy Series for Fantasy Enthusiasts">
+                                            </a>
                                         </div>
                                         <div class="post-content" style="text-align: justify;">
                                             <h3>
@@ -791,7 +791,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-lg-12">
                                     <div class="single-post">
                                         <div class="post-img">
@@ -815,12 +814,9 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-
 
 @endsection

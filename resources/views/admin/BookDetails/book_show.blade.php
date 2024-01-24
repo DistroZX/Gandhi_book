@@ -44,12 +44,9 @@
                                     @foreach($books as $book)
                                         <tr>
                                             <td>{{ $book->name }}</td>
+
                                             <td>
-                                                @foreach($book->images as $image)
-                                                    <div class="text-center">
-                                                        <img src="{{ asset('books/' . $image->image) }}" alt="Book Image" width="61px" height=92px >
-                                                    </div>
-                                                @endforeach
+                                                <img src="{{ asset('books/'. $userOrder['book']['image']->image ) }}" alt="bookImage"  width="70px" height="110px">
                                             </td>
                                             <td>{{ $book->category->genre }}</td>
                                             <td>{{ $book->author->name }}</td>
@@ -60,9 +57,8 @@
                                             <!-- Add more table cells for other user details if needed -->
 
                                             <td>
-                                                <form method="POST" action="{{ url('book/' . $book->id) }}">
+                                                <form method="POST" action="{{ url('book/' . $book->id) }} " >
                                                     @csrf
-                                                    @method('DELETE')
                                                     <button type="submit" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
@@ -70,4 +66,5 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
                         @endsection

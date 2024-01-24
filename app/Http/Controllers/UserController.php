@@ -148,15 +148,16 @@ class UserController extends Controller
       }
 
       public function userProfile(){
-          $book = Book::get();
-          $user = User::get();
-          $order = Order::get();
+          $id = auth()->user()->id;
+          $books = Book::get();
+          $user = User::with('addresses')->find($id);
+          $orders =  $user->orders;
 
 
           return view('user.profile', [
-              'book' => $book,
+              'books' => $books,
               'user' => $user,
-              'order' => $order
+              'orders' => $orders
               ]);
       }
 

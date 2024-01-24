@@ -12,6 +12,10 @@ class Book extends Model
     {
         return $this->hasMany(Image::class, 'product_id');
     }
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'product_id', 'id');
+    }
 
     public function category()
     {

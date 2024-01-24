@@ -1,3 +1,20 @@
 img.primary {
     height: 249px;
 }
+p.truncated-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 4px; /* Adjust the maximum width as per your design */
+    display: inline-block;
+}
+
+p.truncated-text:hover {
+    overflow: visible;
+    white-space: normal;
+    z-index: 1;
+    position: relative;
+    background-color: #fff; /* Set a background color for the tooltip */
+    padding: 5px; /* Set padding for better visibility */
+    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+}

@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Image;
-use App\Models\Order;
+
 
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 
 class BookController extends Controller
@@ -59,7 +58,6 @@ class BookController extends Controller
         return view('user.list')->with('books', $books);
 
         }
-
         public function destroyBook ($id)
         {
         $book = Book::findOrFail($id);
@@ -69,38 +67,11 @@ class BookController extends Controller
         return back()->withSuccess("User Deleted Successfully");
 
         }
-        public function BookOrderUpdate($id, Request $request,$userId)
+        public function categoryShow($categoryId)
         {
-            $book = Book::find($id);
-            $user = User::with('addresses')->find($userId);
-
-
-            $min = 1000000;
-            $max = 9999999;
-            $order_id = random_int($min, $max);
-
-            $order = new Order();
-            $order->order_id = $order_id;
-            $order->product_id = $request->product_id;
-            $order->user_id = $request->userId;
-            $order->quantity = $request->quantity;
-            $order->total_price = $request->total_price;
-            $order->status = $request->status;
-
-            $order->save();
-
-            return redirect()->route('index', ['id' => $book->id, 'userId' => $user->id])
-                ->with('success', 'Order placed successfully!')
-                ->with(['quantity' => $request->quantity, 'totalPrice' => $request->total_price]);
-
-
-
+            $categorisedBooks = Book::where('categoryId', $categoryId)->get();
+            return view('user.categoriesBooks', ['categorisedBooks' =>  $categorisedBooks ]);
         }
-
-
-
-
-
 
 }
 

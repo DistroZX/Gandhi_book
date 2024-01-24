@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 
 
 
-class Homecontroller extends Controller
+class HomeController extends Controller
 {
 
 	public function anonymus_dashboard(){
@@ -46,20 +46,31 @@ class Homecontroller extends Controller
 
 	}
 	public function booklist(){
+
+        $categoryId = [2];
         $books = Book::simplePaginate(12);
         $images = Image::get();
+
+        $booksInCategory = Book::whereHas('category', function ($query) use ($categoryId) {
+            $query->whereIn('id', $categoryId);
+        })->get();
+
 		return view('user.list',[
             'books' => $books,
-            'images'=> $images
+            'images'=> $images,
+            'booksInCategory' => $booksInCategory,
         ]);
 	}
 	public function category(){
 
-		return view('user.category');
+        $categories = Category::get();
+		return view('user.category',
+            ['categories' => $categories]);
 	}
 	public function author(){
-
-		return view('user.authors');
+        $authors = Author::get();
+		return view('user.authors',
+        ['authors' => $authors]);
 	}
 	public function blog(){
 
@@ -100,16 +111,22 @@ class Homecontroller extends Controller
     }
     public function CategoriesList()
     {
+
+
         return view('admin.BookDetails.categories');
+
+
     }
     public function showBookDetails($id){
         $book = Book::find($id);
+        $images = Image::get();
 
 
         if(!$book){
             abort(404);
         }
-        return view('user.book.details', ['book' => $book]);
+        return view('user.book.details', ['book' => $book,
+        'images' => $images]);
     }
     public function BookCheckoutPage($id, Request $request,$userId){
         $request->validate([
@@ -127,7 +144,8 @@ class Homecontroller extends Controller
             ['book' => $book,
                 'user' => $user,
                 'quantity' => $quantity,
-                'totalPrice' => $totalPrice]);
+                'totalPrice' => $totalPrice
+            ]);
     }
 
 }

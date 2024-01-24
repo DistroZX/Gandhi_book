@@ -24,11 +24,11 @@
 					<div class="random-area mb-30">
 						<div class="product-active-2 owl-carousel">
 							<div class="product-total-2">
-                                @foreach($books->take(9) as $book)
+                                @foreach($booksInCategory->take(8) as $book)
                                     <div class="single-most-product bd mb-18">
                                             <div class="most-product-img">
                                                 @foreach($book->images as $image)
-                                                    <a href="book/business-intelligence-and-analytics">
+                                                    <a href="{{ route('bookDetails', ['id' => $book->id]) }}">
                                                         <img src="{{ asset('books/' . $image->image) }}"
                                                              alt="The Handbook of International Trade and Finance" />
                                                     </a>
@@ -67,7 +67,7 @@
 
 			<div class="col-lg-9 col-md-12 col-12 order-lg-2 order-1">
 
-				<div class="section-title-5 mb-30">
+				<div class="section-title-5 mb-35">
 					<h2>Books</h2>
 				</div>
 
@@ -102,14 +102,13 @@
 								<!-- single-product-end -->
 							</div>
                             @endforeach
+                            {{$books->links()}}
                         </div>
 
                     </div>
                 </div>
-                <div class="row">
-                    {{$books->links()}}
 
-                </div>
+
 
 			</div>
 		</div>

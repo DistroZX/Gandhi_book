@@ -4,17 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="footer-top-menu bb-2">
-					<nav>
-						<ul>
-							<li><a href="terms-and-conditions">Terms and Conditions</a></li>
-							<li><a href="privacy-policy">Privacy Policy</a></li>
-							<li><a href="contact">contact us</a></li>
-							<li><a href="{{asset('blog')}}">blog</a></li>
-							<li><a href="dmca">DMCA</a></li>
-						</ul>
-					</nav>
-				</div>
+
 			</div>
 		</div>
 	</div>
@@ -43,9 +33,9 @@
 									<div class="footer-mid-menu">
 										<ul>
 											<li><a href="{{asset('/')}}">Home</a></li>
-											<li><a href="contact">Contact us</a></li>
-											<li><a href="terms-and-conditions">Terms and Conditions</a></li>
-											<li><a href="privacy-policy">Privacy Policy</a></li>
+											<li><a href="#">Contact us</a></li>
+											<li><a href="#">Terms and Conditions</a></li>
+											<li><a href="#">Privacy Policy</a></li>
 										</ul>
 									</div>
 								</div>
@@ -57,10 +47,10 @@
 									</div>
 									<div class="footer-mid-menu">
 										<ul>
-											<li><a href="about-us">About Us</a></li>
-											<li><a href="{{asset('list')}}">Books</a></li>
-											<li><a href="{{asset('blog')}}">Blog</a></li>
-											<li><a href="{{asset('category')}}">Categories</a></li>
+											<li><a href="/">About Us</a></li>
+											<li><a href="{{ route('list') }}">Books</a></li>
+											<li><a href="{{ route('blog') }}">Blog</a></li>
+											<li><a href="{{ route('category') }}">Categories</a></li>
 
 										</ul>
 									</div>
@@ -96,12 +86,12 @@
 				<div class="row bt-2">
 					<div class="col-lg-6 col-md-6 col-12">
 						<div class="copy-right-area">
-							<p>© 2023 <strong> gandhi Books </strong> Made with ❤️ by <a href="#" target="_blank"><strong>Shacara Technologies Limited</strong></a></p>
+							<p>© 2023 <strong> gandhi Books </strong> Made with ❤️ by <a href="#" target="_blank"><strong>Focus IT Solutions</strong></a></p>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<div class="payment-img text-right">
-							<a href="#"><img src="user_r/images/bookimages/1.png" alt="payment"></a>
+							<a href="#"><img src="/user_r/images/bookimages/1.png" alt="payment"></a>
 						</div>
 					</div>
 				</div>
@@ -204,3 +194,5 @@
 		        return password;
 		    }
 	</script>
+
+

@@ -54,7 +54,13 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('order_list') }}" data-target="">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Orders</span>
+                </a>
 
+            </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">

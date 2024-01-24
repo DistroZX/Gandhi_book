@@ -71,5 +71,99 @@
 <!-- Page level custom scripts -->
 <script src="/adminpanel/js/demo/datatables-demo.js"></script>
 
+<script>
+    function setupUpdateButton(updateButton) {
+        var order_id = updateButton.attr('data-order-id');
+        var main_id = updateButton.closest('tr').find('.main_id').val();
+        var statusCell = updateButton.closest('tr').find('.statusCell');
+
+        var currentStatus = statusCell.text();
+
+        var inputElement = document.createElement('input');
+        inputElement.type = 'number';
+        inputElement.value = currentStatus;
+
+        statusCell.html(inputElement);
+        inputElement.focus();
+
+        if (updateButton.text() === 'Update') {
+            // If the button is in "Update" state, change to "Edit"
+            updateButton.text('Edit');
+            closeInput();
+        } else {
+            updateButton.text('Update');
+            $(document).on('click', function (event) {
+                // Check if the clicked element is not the current input
+                if (!$(event.target).is(inputElement) && !$(event.target).is(updateButton)) {
+                    closeInput();
+                }
+            });
+        }
+
+        updateButton.off('click').on('click', function (event) {
+            if (updateButton.text() === 'Edit') {
+                // If the button is in "Edit" state, change to "Update"
+                updateButton.text('Update');
+            } else {
+                var newStatus = parseInt(inputElement.value);
+
+                if (isNaN(newStatus) || newStatus < 1 || newStatus > 4) {
+                    alert("Please enter a valid status between 1 and 4.");
+                    inputElement.value = "1";
+                    return;
+                }
+                $.ajax({
+                    url: '/update-status',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        status: newStatus,
+                        id: main_id,
+                        order_id: order_id,
+                    },
+                    success: function (response) {
+                        console.log('Status updated successfully for order_id ' + order_id);
+                        $('#successMessage').text(response.message).show().delay(3000).fadeOut();
+                        updateButton.text('Edit');
+                        statusCell.trigger('statusChange');
+                    },
+                    error: function (xhr) {
+                        console.error('Error updating status:', xhr);
+                    }
+                });
+            }
+        });
+
+        function closeInput() {
+            // Restore the original content and text of the status cell
+            statusCell.html(currentStatus);
+            // Remove the document click event listener
+            $(document).off('click');
+        }
+    }
+
+    $(document).ready(function () {
+        $('.statusUpdateBtn').on('click', function () {
+            var updateButton = $(this);
+            setupUpdateButton(updateButton);
+        });
+    });
+
+    $(document).ready(function(){
+        $('.statusCell').on('statusChange', function (){
+            var statusCell = $(this);
+            var statusCellValue = parseInt(statusCell.text());
+            if (statusCellValue > 4) {
+                alert("Only four status are available.");
+                statusCell.text ("4");
+            } else if(statusCellValue <= 0){
+                alert("Status's starting from one.");
+                statusCell.text("1");
+            }
+        });
+    });
+</script>
+
+
 
 
