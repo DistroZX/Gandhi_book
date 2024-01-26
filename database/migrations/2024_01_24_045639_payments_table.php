@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->
+            $table->string('order_id');
+            $table->string('razorpay_payment_id')->nullable();
+            $table->string('razorpay_order_id');
+            $table->integer('status');
             $table->timestamps();
         });
     }

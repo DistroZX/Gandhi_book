@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+use Razorpay\Api\Api;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -35,18 +37,35 @@ class OrderController extends Controller
             'totalOrderPrice' => $totalOrderPrice
         ]);
     }
-    public function BookOrderUpdate($id, Request $request,$userId)
+    public function createRazorpayOrder($amount)
     {
-        $book = Book::find($id);
-        $user = User::with('addresses')->find($userId);
+        $apiKey = config('services.registration.rzp.key');
+        $apiSecret = config('services.registration.rzp.secret');
+        $api = new Api($apiKey, $apiSecret);
+
+        $order = $api->order->create([
+            'amount' => $amount,
+            'currency' => 'INR',
+            'payment_capture' => 1,
+        ]);
 
 
-        $min = 1000000;
-        $max = 9999999;
-        $order_id = random_int($min, $max);
+        return $order->id;
+    }
+    public function BookOrderUpdate( Request $request)
+    {
 
+       $request->validate([
+            'order_id' => 'required',
+            'product_id' => 'required',
+            'userId' => 'required',
+            'quantity' => 'required',
+            'total_price' => 'required',
+            'status' => 'required',
+        ]);
         $order = new Order();
-        $order->order_id = $order_id;
+
+        $order->order_id = $request->order_id;
         $order->product_id = $request->product_id;
         $order->user_id = $request->userId;
         $order->quantity = $request->quantity;
@@ -55,13 +74,39 @@ class OrderController extends Controller
 
         $order->save();
 
-        return redirect()->route('index', ['id' => $book->id, 'userId' => $user->id])
-            ->with('success', 'Order placed successfully!')
-            ->with(['quantity' => $request->quantity, 'totalPrice' => $request->total_price]);
+
+        $amount = $order->total_price * 100;
+        $razorpayOrderId = $this->createRazorpayOrder($amount);
 
 
+        $orderId = $order->order_id;
+
+        $payment = new Payment();
+        $payment->razorpay_order_id = $razorpayOrderId;
+        $payment->order_id = $request->order_id;
+        $payment->status = $request->status;
+
+        $payment->save();
+
+
+        return response()->json(['message' => 'Order created successfully', 'orderId' => $orderId, 'razorpay_order_id' => $razorpayOrderId]);
 
     }
+
+    public function handlePayment(Request $request)
+    {
+        $payment = Payment::updateOrCreate(
+            ['order_id' => $request->order_id],
+            [
+                'razorpay_payment_id' => $request->razorpay_payment_id,
+                'status' => 2,
+            ]
+        );
+
+        return response()->json(['message' => 'Payment details saved successfully']);
+
+    }
+
     public function OrderList()
     {
         $userOrders = Order::with('book.image','userOder')

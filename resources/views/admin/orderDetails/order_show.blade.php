@@ -59,8 +59,6 @@
                                 <input type="hidden" class="main_id" value="{{$userOrder->id}}">
 
 
-
-
                                 <!-- Add more table cells for other user details if needed -->
                                 <td>
                                     <button class="btn btn-dark statusUpdateBtn" data-order-id="{{$userOrder->order_id}}">Edit</button>

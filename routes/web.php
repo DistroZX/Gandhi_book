@@ -42,6 +42,10 @@ Route::middleware(['IsLogin'])->group(function () {
     Route::get('/book/{id}', [HomeController::class, 'showBookDetails'])->name('bookDetails');
     Route::get('/profile', [UserController::class, 'userProfile'])->name('user_profile');
     Route::get('/orders', [OrderController::class, 'userOrder'])->name('user_order');
+    Route::post('/handle-razorpay-response', [OrderController::class, 'handleRazorpayResponse']);
+    Route::post('/handle-payment', [OrderController::class, 'handlePayment'])->name('paymentDone');
+
+
 
 });
 

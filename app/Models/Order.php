@@ -13,6 +13,8 @@ class Order extends Model
 //    {
 //        return $this->belongsTo(Book::class, 'product_id');
 //    }
+
+
     public function book()
     {
         return $this->belongsTo(Book::class, 'product_id', 'id');

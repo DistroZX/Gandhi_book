@@ -167,16 +167,17 @@
 		<script src="user_r/js/croppie.js"></script>
 		<script src="user_r/js/gandhibooks.js"></script>
 		<script src="user_r/js/checkout_script.js"></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 
 		<script>
-		checkIsLoginMenu();
-		</script>
-		<script>
 		    document.getElementById('generate-password').addEventListener('click', function() {
-			    var strongPassword = generateStrongPassword(12); // Change length as needed
+			    var strongPassword = generateStrongPassword(12);
 			    document.getElementById('password').value = strongPassword;
 			    document.getElementById('password-confirm').value = strongPassword;
 
@@ -193,6 +194,56 @@
 		        }
 		        return password;
 		    }
-	</script>
+        </script>
+
+            {{--var options = {--}}
+            {{--    "key": "{{ env('rzr_key') }}",--}}
+            {{--    "amount": "",--}}
+            {{--    "currency": "INR",--}}
+            {{--    "name": "Gandhi Book",--}}
+
+            {{--    "description": "Test Transaction",--}}
+            {{--    "image": "{{ asset('/user_r/images/bookimages/logo.png') }}",--}}
+            {{--    // Dynamically generated order ID on the server side--}}
+            {{--    "handler": function (response) {--}}
+            {{--        console.log("Razorpay Response:", response);--}}
+            {{--        // Customize this section based on your application's needs--}}
+            {{--        alert("Payment Successful");--}}
+            {{--        alert("all: " + response);--}}
+
+            {{--        document.getElementById('orderForm').submit();--}}
+            {{--    },--}}
+            {{--    "prefill": {--}}
+            {{--        "name": "",--}}
+            {{--        "email": ""--}}
+            {{--    },--}}
+            {{--    "notes": {--}}
+            {{--        "address": "Razorpay Corporate Office"--}}
+            {{--    },--}}
+            {{--    "theme": {--}}
+            {{--        "color": "#f07c29"--}}
+            {{--    }--}}
+            {{--};--}}
+
+
+            {{--var rzp1 = new Razorpay(options);--}}
+
+            {{--rzp1.on('payment.failed', function (response) {--}}
+            {{--    // Customize this section based on your application's needs--}}
+            {{--    alert("Payment Failed");--}}
+            {{--    alert("Error Code: " + response.error.code);--}}
+            {{--    alert("Error Description: " + response.error.description);--}}
+            {{--    // Additional error information if needed--}}
+            {{--});--}}
+
+            {{--document.getElementById('rzp-button1').onclick = function (e) {--}}
+            {{--    rzp1.open();--}}
+            {{--    e.preventDefault();--}}
+            {{--}--}}
+
+
+
+
+
 
 
