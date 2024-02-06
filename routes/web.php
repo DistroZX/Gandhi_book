@@ -11,11 +11,11 @@ use App\Http\Controllers\OrderController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/anonymous', [UserController::class, 'admin_index'])->name('admin_index');
-Route::post('/anonymous/login', [UserController::class, 'anonymus_login'])->name('admin_login');
+Route::post('/anonymous/login', [UserController::class, 'anonymous_login'])->name('admin_login');
 
 Route::middleware(['IsAdmin'])->group(function () {
 
- 	Route::get('/anonymous/dashboard', [HomeController::class, 'anonymus_dashboard'])->name('admin.dashboard');
+ 	Route::get('/anonymous/dashboard', [HomeController::class, 'anonymous_dashboard'])->name('admin.dashboard');
  	Route::get('/anonymous/login', [HomeController::class, 'admin_logout'])->name('admin.logout');
      //user
     Route::get('/anonymous/users', [HomeController::class, 'showUser'])->name('show');
@@ -38,15 +38,15 @@ Route::middleware(['IsAdmin'])->group(function () {
 });
 Route::middleware(['IsLogin'])->group(function () {
     Route::post('/order/{id}/{userId}', [OrderController::class, 'BookOrderUpdate'])->name('bookOrder');
-    Route::get('/checkout/{id}/{userId}', [HomeController::class, 'BookCheckoutPage'])->name('bookCheckout');
     Route::get('/book/{id}', [HomeController::class, 'showBookDetails'])->name('bookDetails');
-    Route::get('/profile', [UserController::class, 'userProfile'])->name('user_profile');
-    Route::get('/orders', [OrderController::class, 'userOrder'])->name('user_order');
     Route::post('/handle-razorpay-response', [OrderController::class, 'handleRazorpayResponse']);
     Route::post('/handle-payment', [OrderController::class, 'handlePayment'])->name('paymentDone');
 
-
-
+    Route::middleware(['IfAdmin'])->group(function (){
+        Route::get('/profile', [UserController::class, 'userProfile'])->name('user_profile');
+        Route::get('/orders', [OrderController::class, 'userOrder'])->name('user_order');
+        Route::get('/checkout/{id}/{userId}', [HomeController::class, 'BookCheckoutPage'])->name('bookCheckout');
+    });
 });
 
 Route::get('/sign_up', [UserController::class, 'sign_up'])->name('sign_up');
@@ -60,7 +60,7 @@ Route::get('/logout', [UserController::class, 'user_logout'])->name('user.logout
 
 
 
-Route::get('/Booklist', [HomeController::class, 'booklist'])->name('list');
+Route::get('/BookList', [HomeController::class, 'bookList'])->name('list');
 
 Route::get('/category', [HomeController::class, 'category'])->name('category');
 Route::get('/category/{categoryId}', [BookController::class, 'categoryShow'])->name('category_show');

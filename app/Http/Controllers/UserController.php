@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Order;
-
+use function Laravel\Prompts\error;
 
 
 class UserController extends Controller
@@ -23,7 +23,7 @@ class UserController extends Controller
 
 
       // admin login
-      public function anonymus_login(Request $request){
+      public function anonymous_login(Request $request){
 
          $credentials = $request->validate([
             'email' => 'required|email',
@@ -148,17 +148,22 @@ class UserController extends Controller
       }
 
       public function userProfile(){
-          $id = auth()->user()->id;
-          $books = Book::get();
-          $user = User::with('addresses')->find($id);
-          $orders =  $user->orders;
 
 
-          return view('user.profile', [
-              'books' => $books,
-              'user' => $user,
-              'orders' => $orders
-              ]);
+              $id = auth()->user()->id;
+              $books = Book::get();
+              $user = User::with('addresses')->find($id);
+              $orders =  $user->orders;
+
+              return view('user.profile', [
+                  'books' => $books,
+                  'user' => $user,
+                  'orders' => $orders
+                  ]);
+
+
+
+
       }
 
 

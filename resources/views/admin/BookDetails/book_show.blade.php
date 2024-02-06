@@ -46,7 +46,7 @@
                                             <td>{{ $book->name }}</td>
 
                                             <td>
-                                                <img src="{{ asset('books/'. $userOrder['book']['image']->image ) }}" alt="bookImage"  width="70px" height="110px">
+                                                <img src="{{ asset('books/'. $book['image']->image ) }}" alt="bookImage"  width="70px" height="110px">
                                             </td>
                                             <td>{{ $book->category->genre }}</td>
                                             <td>{{ $book->author->name }}</td>

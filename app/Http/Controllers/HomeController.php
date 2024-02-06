@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
-	public function anonymus_dashboard(){
+	public function anonymous_dashboard(){
 
 		return view('admin.index');
 	}
@@ -45,7 +45,7 @@ class HomeController extends Controller
         ]);
 
 	}
-	public function booklist(){
+	public function bookList(){
 
         $categoryId = [2];
         $books = Book::simplePaginate(12);

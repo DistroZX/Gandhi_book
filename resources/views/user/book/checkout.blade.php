@@ -52,16 +52,13 @@
 
                                 <div class="row">
                                     <label for="selected_address">Select Address:</label>
-
-                                    <select name="selected_address" class="form-control mb-1">
-                                        @foreach($user->addresses as $address)
+                                    <select name="selected_address" class="form-control mb-1" required>
+                                    @foreach($user->addresses as $address)
                                             <option value="{{ $address->id }}">{{ $address->street }}
                                                 , {{ $address->city }}
                                                 , {{ $address->state }}, {{ $address->postal_code }}</option>
                                         @endforeach
                                     </select>
-
-
                                 </div>
 
 
@@ -213,7 +210,6 @@
                 "handler": function (response) {
                     console.log("Razorpay Response:", response);
                     alert("Payment Successful");
-                    alert("all: " + JSON.stringify(response));
                     $.ajax({
                         url: '/handle-payment',
                         method: 'POST',

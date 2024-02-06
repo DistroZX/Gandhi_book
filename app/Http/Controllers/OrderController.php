@@ -12,31 +12,30 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function userOrder(){
-
+    public function userOrder()
+    {
         $id = auth()->user()->id;
         $user = User::with('addresses')->find($id);
-        $orders =  $user->orders;
+        $orders = $user->orders;
         $orderDetails = [];
         $totalOrderPrice = 0;
         $subtotal = 0;
 
-        foreach($user->orders as $order){
+        foreach ($orders as $order) {
             $orderId = $order->product_id;
-            $subtotal += $order->quantity * $order->book->price;
-            $totalOrderPrice += $order->quantity * $order->book->price ;
+            $totalOrderPrice += $order->quantity * $order->book->price + 10;
             $orderDetail = Order::with('book.image')->where('product_id', $orderId)->first();
-            $orderDetails[] = $orderDetail;
+            $orderDetails[$order->id][] = $orderDetail;
         }
 
         return view('user.order', [
             'user' => $user,
             'orders' => $orders,
-            'orderDetails'=>$orderDetails,
-            'subtotal' => $subtotal,
-            'totalOrderPrice' => $totalOrderPrice
+            'orderDetails' => $orderDetails,
+            'totalOrderPrice' => $totalOrderPrice,
         ]);
     }
+
     public function createRazorpayOrder($amount)
     {
         $apiKey = config('services.registration.rzp.key');

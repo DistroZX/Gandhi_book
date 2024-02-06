@@ -102,8 +102,8 @@
 								<!-- single-product-end -->
 							</div>
                             @endforeach
-                            {{$books->links()}}
                         </div>
+                        {{$books->links()}}
 
                     </div>
                 </div>
