@@ -92,7 +92,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12">
-                    <img src="user_r/images/index/banner.jpg" alt="banner"/>
+                    <img src="{{ asset('books/banner.jpg') }}" alt="banner"/>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <h2 class="text-center">About Gandhi Books</h2>
