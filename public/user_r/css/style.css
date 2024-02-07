@@ -863,7 +863,7 @@ body {
     position: relative;
 }
 
-.menu-area ul li>a,
+.menu-area ul li > a,
 .safe-area a {
     background: transparent none repeat scroll 0 0;
     color: #fff;
@@ -877,7 +877,9 @@ body {
     z-index: 4;
 }
 
-.menu-area ul li a i {
+
+
+.menu-area ul li > a i {
     padding-left: 10px;
 }
 

@@ -67,11 +67,10 @@ class UserController extends Controller
             'password' => 'required|min:6'
         ]);
          if (Auth::attempt($credentials)) {
-            $user = Auth::user();
             $request->session()->regenerate();
             return redirect()->route('index')->withSuccess('You have successfully logged in!');
         }else {
-            return redirect()->route('sign_up')->with('error',"User doesn't exist!");
+            return redirect()->route('sign_in')->with('error',"User doesn't exist.Invalid credential! Please try again.");
       }
 
 

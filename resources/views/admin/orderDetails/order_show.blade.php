@@ -7,7 +7,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="text-center mb-2">
-{{--                    <a href="#" class="btn btn-primary">Add Orders</a>--}}
+                    {{--                    <a href="#" class="btn btn-primary">Add Orders</a>--}}
                 </div>
                 <div>
                     @if(session('success'))
@@ -43,25 +43,27 @@
 
                         @foreach($userOrders as $userOrder)
 
-
-
                             <tr>
                                 <td>{{ $userOrder['userOder']->username }}</td>
                                 <td>#{{ $userOrder->order_id }}</td>
 
                                 <td>{{ $userOrder['book']->name }}</td>
-                                <td><img src="{{ asset('books/'. $userOrder['book']['image']->image ) }}" alt="bookImage" width="70px" height="110px">
+                                <td><img src="{{ asset('books/'. $userOrder['book']['image']->image ) }}"
+                                         alt="bookImage" width="70px" height="110px">
                                 </td>
                                 <td>{{ $userOrder->quantity }}</td>
                                 <td>{{ $userOrder->total_price }}</td>
-                                <td class="statusCell" data-order-id="{{$userOrder->order_id}}">{{$userOrder->status}}</td>
+                                <td class="statusCell"
+                                    data-order-id="{{$userOrder->order_id}}">{{$userOrder->status}}</td>
 
                                 <input type="hidden" class="main_id" value="{{$userOrder->id}}">
 
 
                                 <!-- Add more table cells for other user details if needed -->
                                 <td>
-                                    <button class="btn btn-dark statusUpdateBtn" data-order-id="{{$userOrder->order_id}}">Edit</button>
+                                    <button class="btn btn-dark statusUpdateBtn"
+                                            data-order-id="{{$userOrder->order_id}}">Edit
+                                    </button>
                                 </td>
 
                             </tr>
@@ -70,8 +72,6 @@
                         </tbody>
 
                     </table>
-
-
 
 @endsection
 

@@ -122,24 +122,16 @@
                         order_id: order_id,
                     },
                     success: function (response) {
-                        console.log('Status updated successfully for order_id ' + order_id);
                         $('#successMessage').text(response.message).show().delay(3000).fadeOut();
                         updateButton.text('Edit');
                         statusCell.trigger('statusChange');
+                        statusCell.html(newStatus);
                     },
                     error: function (xhr) {
-                        console.error('Error updating status:', xhr);
                     }
                 });
             }
         });
-
-        function closeInput() {
-            // Restore the original content and text of the status cell
-            statusCell.html(currentStatus);
-            // Remove the document click event listener
-            $(document).off('click');
-        }
     }
 
     $(document).ready(function () {
@@ -162,6 +154,17 @@
             }
         });
     });
+</script>
+<script>
+    $(document).ready(function() {
+        var path = window.location.pathname;
+        $('.menu-area ul li a').each(function() {
+            if ($(this).attr('href') === path) {
+                $(this).closest('li').addClass('active');
+            }
+        });
+    });
+
 </script>
 
 

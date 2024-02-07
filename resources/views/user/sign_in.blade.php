@@ -58,8 +58,8 @@
 							<span class="pull-left">Remember me</span>
 						</div>
 					</form>
-					<a href="reset-password.php">Lost your password?</a>
-					<p>Don't have an account <a href="register.php" style="color:#F17B28;">Register</a></p>
+					<a href="#">Lost your password?</a>
+					<p>Don't have an account <a href="{{ route('sign_up') }}" style="color:#F17B28;">Register</a></p>
 
 				</div>
 			</div>

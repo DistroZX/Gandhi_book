@@ -65,19 +65,21 @@
 						<div class="menu-area">
 							<nav>
 								<ul>
-									<li><a href="/">Home</a></li>
-									<li><a href="{{route('list')}}">Books</a></li>
-									<li><a href="{{route('category')}}">Categories</a></li>
-									<li><a href="{{route('author')}}">Authors</a></li>
-									<!-- requesting a book need to be adjusted -->
+                                    <?php
+                                    $current_url = $_SERVER['REQUEST_URI'];
+                                    ?>
+                                    <li <?php if ($current_url == "/") echo 'class="active"'; ?>><a href="/">Home</a></li>
+                                    <li <?php if ($current_url == "/BookList") echo 'class="active"'; ?>><a href="{{route('list')}}">Books</a></li>
+                                    <li <?php if ($current_url == "/category") echo 'class="active"'; ?>><a href="{{route('category')}}">Categories</a></li>
+                                    <li <?php if ($current_url == "/authors") echo 'class="active"'; ?>><a href="{{route('author')}}">Authors</a></li><!-- requesting a book need to be adjusted -->
 
-									<li><a href="{{route('blog')}}">Blog</a></li>
+									<li <?php if ($current_url == "/blog") echo 'class="active"'; ?>><a href="{{route('blog')}}">Blog</a></li>
 									@if(Auth::check())
-										<li><a href="{{ route('user_profile') }}">My Profile</a></li>
-										<li><a href="{{ route('user.logout') }}">Logout</a></li>
+										<li <?php if ($current_url == '/profile') echo 'class="active"'; ?>><a href="{{ route('user_profile') }}">My Profile</a></li>
+										<li <?php if ($current_url == '/logout') echo 'class="active"'; ?>><a href="{{ route('user.logout') }}">Logout</a></li>
 									@else
-										<li class="active"><a href="{{route('sign_up')}}">Register</a></li>
-										<li><a href="{{route('sign_in')}}">Login</a></li>
+										<li <?php if ($current_url == '/sign_up') echo 'class="active"'; ?>><a href="{{route('sign_up')}}">Register</a></li>
+										<li <?php if ($current_url == '/sign_in') echo 'class="active"'; ?>><a href="{{route('sign_in')}}">Login</a></li>
 									@endif
 								</ul>
 							</nav>
