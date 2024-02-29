@@ -17,7 +17,6 @@ class HomeController extends Controller
 {
 
 	public function anonymous_dashboard(){
-
 		return view('admin.index');
 	}
 	public function index()
@@ -146,6 +145,11 @@ class HomeController extends Controller
                 'quantity' => $quantity,
                 'totalPrice' => $totalPrice
             ]);
+    }
+    public function Feedback()
+    {
+        $feedback = Feedback::get();
+        return view('admin.common.header');
     }
 
 }

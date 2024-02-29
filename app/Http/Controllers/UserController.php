@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -147,8 +148,6 @@ class UserController extends Controller
       }
 
       public function userProfile(){
-
-
               $id = auth()->user()->id;
               $books = Book::get();
               $user = User::with('addresses')->find($id);
@@ -159,9 +158,24 @@ class UserController extends Controller
                   'user' => $user,
                   'orders' => $orders
                   ]);
+      }
+      public function userAddressStore(Request $request)
+      {
+          dd("sddsd");
+          $validatedData = $request->validate([
+              'street' => 'required',
+              'city' => 'required',
+              'postal_code' => 'required|number',
+          ]);
 
+          $address = new Address();
+          $address->street = $validatedData['street'];
+          $address->city = $validatedData['city'];
+          $address->postal_code = $validatedData['postal_code'];
 
+          $address->save();
 
+          return response()->json(['message' => 'Address added successfully']);
 
       }
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
 use Razorpay\Api\Api;
 
 use Illuminate\Http\Request;
@@ -19,7 +18,6 @@ class OrderController extends Controller
         $orders = $user->orders;
         $orderDetails = [];
         $totalOrderPrice = 0;
-        $subtotal = 0;
 
         foreach ($orders as $order) {
             $orderId = $order->product_id;

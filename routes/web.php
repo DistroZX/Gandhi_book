@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 
 
 
+
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/anonymous', [UserController::class, 'admin_index'])->name('admin_index');
 Route::post('/anonymous/login', [UserController::class, 'anonymous_login'])->name('admin_login');
@@ -46,6 +47,7 @@ Route::middleware(['IsLogin'])->group(function () {
         Route::get('/profile', [UserController::class, 'userProfile'])->name('user_profile');
         Route::get('/orders', [OrderController::class, 'userOrder'])->name('user_order');
         Route::get('/checkout/{id}/{userId}', [HomeController::class, 'BookCheckoutPage'])->name('bookCheckout');
+        Route::post('/address', [UserController::class, 'userAddressStore'])->name('addressStore');
     });
 });
 

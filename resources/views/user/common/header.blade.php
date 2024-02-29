@@ -98,14 +98,19 @@
 						<div class="mobile-menu">
 							<nav id="mobile-menu-active">
 								<ul id="nav">
-									<li><a href="index.php">Home</a></li>
-									<li><a href="books">Books</a></li>
-									<li><a href="categories">Categories</a></li>
-									<li><a href="author">Authors</a></li>
-									<li><a href="account.php#request-book">Request Book</a></li>
-									<li><a href="blog/">Blog</a></li>
-									<li><a href="login">Login</a></li>
-									<li class="active"><a href="register">Register</a></li>
+                                    <li <?php if ($current_url == "/") echo 'class="active"'; ?>><a href="/">Home</a></li>
+                                    <li <?php if ($current_url == "/BookList") echo 'class="active"'; ?>><a href="{{route('list')}}">Books</a></li>
+                                    <li <?php if ($current_url == "/category") echo 'class="active"'; ?>><a href="{{route('category')}}">Categories</a></li>
+                                    <li <?php if ($current_url == "/authors") echo 'class="active"'; ?>><a href="{{route('author')}}">Authors</a></li><!-- requesting a book need to be adjusted -->
+
+                                    <li <?php if ($current_url == "/blog") echo 'class="active"'; ?>><a href="{{route('blog')}}">Blog</a></li>
+                                    @if(Auth::check())
+                                        <li <?php if ($current_url == '/profile') echo 'class="active"'; ?>><a href="{{ route('user_profile') }}">My Profile</a></li>
+                                        <li <?php if ($current_url == '/logout') echo 'class="active"'; ?>><a href="{{ route('user.logout') }}">Logout</a></li>
+                                    @else
+                                        <li <?php if ($current_url == '/sign_up') echo 'class="active"'; ?>><a href="{{route('sign_up')}}">Register</a></li>
+                                        <li <?php if ($current_url == '/sign_in') echo 'class="active"'; ?>><a href="{{route('sign_in')}}">Login</a></li>
+                                    @endif
 								</ul>
 							</nav>
 						</div>

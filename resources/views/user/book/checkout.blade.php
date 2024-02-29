@@ -51,14 +51,54 @@
                             <div class="p-4">
 
                                 <div class="row">
-                                    <label for="selected_address">Select Address:</label>
-                                    <select name="selected_address" class="form-control mb-1" required>
-                                    @foreach($user->addresses as $address)
-                                            <option value="{{ $address->id }}">{{ $address->street }}
-                                                , {{ $address->city }}
-                                                , {{ $address->state }}, {{ $address->postal_code }}</option>
-                                        @endforeach
-                                    </select>
+                                    @if($user->addresses->isEmpty())
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAddressModal">Add Address</button>
+
+                                        <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Add Address</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Your form for adding a new address goes here -->
+                                                        <form id="addAddressForm">
+                                                            <!-- Form fields for address input -->
+                                                            <div class="form-group">
+                                                                <label for="street">Street</label>
+                                                                <input type="text" class="form-control" id="street" name="street" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="city">City</label>
+                                                                <input type="text" class="form-control" id="city" name="city" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="postal_code">Postal Code</label>
+                                                                <input type="text" class="form-control" id="postal_code" name="postal_code" required>
+                                                            </div>
+                                                            <!-- Add more form fields as needed -->
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    @else
+                                        <label for="selected_address">Select Address:</label>
+                                        <select name="selected_address" class="form-control mb-1" required>
+                                        @foreach($user->addresses as $address)
+                                                <option value="{{ $address->id }}">{{ $address->street }}
+                                                    , {{ $address->city }}
+                                                    , {{ $address->state }}, {{ $address->postal_code }}</option>
+                                            @endforeach
+                                        </select>
+
+                                    @endif
+
                                 </div>
 
 
@@ -148,7 +188,9 @@
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+</script>
 
 
 <script>
@@ -255,6 +297,7 @@
         }
     });
 </script>
+
 
 
 
